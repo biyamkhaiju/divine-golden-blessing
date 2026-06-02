@@ -6,11 +6,7 @@ import { Volume2, VolumeX } from "lucide-react";
  * Place the MP3 in public/music/ or use a CDN link.
  * Example: src="/music/wedding-song.mp3"
  */
-<<<<<<< HEAD
 const SONG_SRC = "https://res.cloudinary.com/diakoeadm/video/upload/v1780367435/Sangeet_Dance_Series_Day_26_60_Kudmayi_The_Sparklers_shorts_dance_kudmayi_bollywood_UCwRfc1Arfo_ccsbs4.mp3"; // <-- ADD YOUR SONG URL HERE
-=======
-const SONG_SRC = ""; // <-- ADD YOUR SONG URL HERE
->>>>>>> 028fee88741cffcc7768d35e84be9b627b012065
 
 export default function WeddingMusic() {
   const [playing, setPlaying] = useState(false);
