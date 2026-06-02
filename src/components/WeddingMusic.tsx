@@ -29,15 +29,30 @@ export default function WeddingMusic() {
     setMuted((m) => !m);
   }, []);
 
-  // Attempt auto-play on mount
-  useEffect(() => {
-    if (!audioRef.current || !SONG_SRC) return;
+useEffect(() => {
+  if (!audioRef.current || !SONG_SRC) return;
+  
+  const playOnInteraction = () => {
+    if (!audioRef.current) return;
     audioRef.current
       .play()
       .then(() => setPlaying(true))
       .catch(() => {});
-  }, []);
+    document.removeEventListener("click", playOnInteraction);
+    document.removeEventListener("touchstart", playOnInteraction);
+    document.removeEventListener("keydown", playOnInteraction);
+  };
 
+  document.addEventListener("click", playOnInteraction);
+  document.addEventListener("touchstart", playOnInteraction);
+  document.addEventListener("keydown", playOnInteraction);
+
+  return () => {
+    document.removeEventListener("click", playOnInteraction);
+    document.removeEventListener("touchstart", playOnInteraction);
+    document.removeEventListener("keydown", playOnInteraction);
+  };
+}, []);
   return (
     <div className="flex flex-col items-center gap-3">
       {/* Hidden audio element */}
