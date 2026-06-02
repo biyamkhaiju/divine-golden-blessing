@@ -6,7 +6,8 @@ import { Volume2, VolumeX } from "lucide-react";
  * Place the MP3 in public/music/ or use a CDN link.
  * Example: src="/music/wedding-song.mp3"
  */
-const SONG_SRC = "https://res.cloudinary.com/diakoeadm/video/upload/v1780367435/Sangeet_Dance_Series_Day_26_60_Kudmayi_The_Sparklers_shorts_dance_kudmayi_bollywood_UCwRfc1Arfo_ccsbs4.mp3";
+const SONG_SRC =
+  "https://res.cloudinary.com/diakoeadm/video/upload/v1780367435/Sangeet_Dance_Series_Day_26_60_Kudmayi_The_Sparklers_shorts_dance_kudmayi_bollywood_UCwRfc1Arfo_ccsbs4.mp3";
 export default function WeddingMusic() {
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(false);
@@ -29,36 +30,34 @@ export default function WeddingMusic() {
     setMuted((m) => !m);
   }, []);
 
-useEffect(() => {
-  if (!audioRef.current || !SONG_SRC) return;
-  
-  const playOnInteraction = () => {
-    if (!audioRef.current) return;
-    audioRef.current
-      .play()
-      .then(() => setPlaying(true))
-      .catch(() => {});
-    document.removeEventListener("click", playOnInteraction);
-    document.removeEventListener("touchstart", playOnInteraction);
-    document.removeEventListener("keydown", playOnInteraction);
-  };
+  useEffect(() => {
+    if (!audioRef.current || !SONG_SRC) return;
 
-  document.addEventListener("click", playOnInteraction);
-  document.addEventListener("touchstart", playOnInteraction);
-  document.addEventListener("keydown", playOnInteraction);
+    const playOnInteraction = () => {
+      if (!audioRef.current) return;
+      audioRef.current
+        .play()
+        .then(() => setPlaying(true))
+        .catch(() => {});
+      document.removeEventListener("click", playOnInteraction);
+      document.removeEventListener("touchstart", playOnInteraction);
+      document.removeEventListener("keydown", playOnInteraction);
+    };
 
-  return () => {
-    document.removeEventListener("click", playOnInteraction);
-    document.removeEventListener("touchstart", playOnInteraction);
-    document.removeEventListener("keydown", playOnInteraction);
-  };
-}, []);
+    document.addEventListener("click", playOnInteraction);
+    document.addEventListener("touchstart", playOnInteraction);
+    document.addEventListener("keydown", playOnInteraction);
+
+    return () => {
+      document.removeEventListener("click", playOnInteraction);
+      document.removeEventListener("touchstart", playOnInteraction);
+      document.removeEventListener("keydown", playOnInteraction);
+    };
+  }, []);
   return (
     <div className="flex flex-col items-center gap-3">
       {/* Hidden audio element */}
-      {SONG_SRC && (
-        <audio ref={audioRef} src={SONG_SRC} loop preload="auto" />
-      )}
+      {SONG_SRC && <audio ref={audioRef} src={SONG_SRC} loop preload="auto" />}
 
       <div className="flex items-center gap-3">
         <button

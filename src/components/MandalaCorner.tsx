@@ -1,6 +1,12 @@
 export default function MandalaCorner({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 160 160" className={className} fill="none" stroke="currentColor" strokeWidth="0.6">
+    <svg
+      viewBox="0 0 160 160"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="0.6"
+    >
       <g opacity="0.85">
         <path d="M0 80 Q40 80 80 40 T160 0" />
         <path d="M0 60 Q50 60 80 30" opacity="0.6" />
