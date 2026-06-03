@@ -16,11 +16,7 @@ export default function GaneshReveal({ bride, groom }: { bride: string; groom: s
     const t1 = setTimeout(() => setPhase("breathing"), 50);
     const t2 = setTimeout(() => setPhase("dismantle"), 6000);
     const t3 = setTimeout(() => setPhase("names"), 7800);
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-      clearTimeout(t3);
-    };
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, []);
 
   // Dismantle: Ganesh particles morph directly into the names
@@ -33,10 +29,8 @@ export default function GaneshReveal({ bride, groom }: { bride: string; groom: s
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     let raf = 0;
 
-    const W = cvs.clientWidth,
-      H = cvs.clientHeight;
-    cvs.width = W * dpr;
-    cvs.height = H * dpr;
+    const W = cvs.clientWidth, H = cvs.clientHeight;
+    cvs.width = W * dpr; cvs.height = H * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
     // Sample silhouette from transparent PNG
@@ -44,20 +38,11 @@ export default function GaneshReveal({ bride, groom }: { bride: string; groom: s
     const targetW = Math.min(380, Math.floor(W * 0.5));
     const ratio = img.naturalHeight / img.naturalWidth;
     const targetH = Math.floor(targetW * ratio);
-    off.width = targetW;
-    off.height = targetH;
+    off.width = targetW; off.height = targetH;
     const octx = off.getContext("2d", { willReadFrequently: true })!;
-    try {
-      octx.drawImage(img, 0, 0, targetW, targetH);
-    } catch {
-      return;
-    }
+    try { octx.drawImage(img, 0, 0, targetW, targetH); } catch { return; }
     let data: Uint8ClampedArray;
-    try {
-      data = octx.getImageData(0, 0, targetW, targetH).data;
-    } catch {
-      return;
-    }
+    try { data = octx.getImageData(0, 0, targetW, targetH).data; } catch { return; }
 
     const imgCx = W / 2;
     const imgCy = H / 2 - 20;
@@ -75,8 +60,7 @@ export default function GaneshReveal({ bride, groom }: { bride: string; groom: s
 
     // Target text sample points
     const tcv = document.createElement("canvas");
-    tcv.width = W;
-    tcv.height = H;
+    tcv.width = W; tcv.height = H;
     const tctx = tcv.getContext("2d")!;
     tctx.fillStyle = "#fff";
     tctx.textAlign = "center";
@@ -94,26 +78,17 @@ export default function GaneshReveal({ bride, groom }: { bride: string; groom: s
     }
 
     type P = {
-      sx: number;
-      sy: number;
-      tx: number;
-      ty: number;
-      delay: number;
-      size: number;
-      hue: number;
+      sx: number; sy: number; tx: number; ty: number;
+      delay: number; size: number; hue: number;
     };
-    const N = Math.min(
-      srcPoints.length,
-      textPoints.length > 0 ? Math.max(textPoints.length, 2200) : 2200,
-    );
+    const N = Math.min(srcPoints.length, textPoints.length > 0 ? Math.max(textPoints.length, 2200) : 2200);
     const particles: P[] = Array.from({ length: N }, (_, i) => {
       const s = srcPoints[i % srcPoints.length];
-      const t = textPoints.length > 0 ? textPoints[i % textPoints.length] : { x: s.x, y: s.y };
+      const t = textPoints.length > 0
+        ? textPoints[i % textPoints.length]
+        : { x: s.x, y: s.y };
       return {
-        sx: s.x,
-        sy: s.y,
-        tx: t.x,
-        ty: t.y,
+        sx: s.x, sy: s.y, tx: t.x, ty: t.y,
         delay: Math.random() * 0.35,
         size: Math.random() * 1.3 + 0.5,
         hue: 38 + Math.random() * 14,
@@ -128,7 +103,7 @@ export default function GaneshReveal({ bride, groom }: { bride: string; groom: s
       ctx.clearRect(0, 0, W, H);
       ctx.globalCompositeOperation = "lighter";
       for (const p of particles) {
-        const t = Math.min(1, Math.max(0, elapsed / DUR - p.delay));
+        const t = Math.min(1, Math.max(0, (elapsed / DUR) - p.delay));
         const e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
         const cx = (p.sx + p.tx) / 2 + Math.sin(e * Math.PI) * 30;
         const cy = (p.sy + p.ty) / 2 - Math.sin(e * Math.PI) * 70;
@@ -137,13 +112,9 @@ export default function GaneshReveal({ bride, groom }: { bride: string; groom: s
         const fade = t < 0.1 ? t * 10 : 1;
         const r = p.size * (1 + Math.sin(elapsed * 0.005 + p.delay * 10) * 0.25);
         ctx.fillStyle = `hsla(${p.hue}, 95%, 65%, ${fade})`;
-        ctx.beginPath();
-        ctx.arc(mx, my, r, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.beginPath(); ctx.arc(mx, my, r, 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = `hsla(${p.hue}, 100%, 72%, ${fade * 0.2})`;
-        ctx.beginPath();
-        ctx.arc(mx, my, r * 3, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.beginPath(); ctx.arc(mx, my, r * 3, 0, Math.PI * 2); ctx.fill();
       }
       ctx.globalCompositeOperation = "source-over";
       if (elapsed < DUR + 800) raf = requestAnimationFrame(tick);
@@ -176,14 +147,12 @@ export default function GaneshReveal({ bride, groom }: { bride: string; groom: s
           crossOrigin="anonymous"
           onLoad={() => setImgReady(true)}
           className="select-none ganesh-edge-glow"
-          style={
-            {
-              width: "min(58vmin, 440px)",
-              height: "auto",
-              userSelect: "none",
-              WebkitUserDrag: "none",
-            } as React.CSSProperties
-          }
+          style={{
+            width: "min(58vmin, 440px)",
+            height: "auto",
+            userSelect: "none",
+            WebkitUserDrag: "none",
+          } as React.CSSProperties}
           draggable={false}
         />
       </div>
@@ -203,18 +172,11 @@ export default function GaneshReveal({ bride, groom }: { bride: string; groom: s
         }`}
       >
         <HandwrittenName text={groom} delay={0.1} />
-        <span
-          className="my-1 font-serif italic text-[color:var(--royal)]"
-          style={{ fontSize: "clamp(1.1rem, 2vw, 1.8rem)" }}
-        >
-          &
-        </span>
+        <span className="my-1 font-serif italic text-[color:var(--royal)]" style={{ fontSize: "clamp(1.1rem, 2vw, 1.8rem)" }}>&</span>
         <HandwrittenName text={bride} delay={1.4} />
         <div className="mt-8 flex items-center gap-3 opacity-80">
           <span className="h-px w-16 bg-gradient-to-r from-transparent to-[color:var(--royal)]" />
-          <span className="font-serif tracking-[0.4em] text-[color:var(--warm)]/80 text-xs uppercase">
-            Shubha Vivah
-          </span>
+          <span className="font-serif tracking-[0.4em] text-[color:var(--warm)]/80 text-xs uppercase">Shubha Vivah</span>
           <span className="h-px w-16 bg-gradient-to-l from-transparent to-[color:var(--royal)]" />
         </div>
       </div>
@@ -238,15 +200,11 @@ function HandwrittenName({ text, delay }: { text: string; delay: number }) {
         </linearGradient>
         <filter id={`glow-${text}`} x="-20%" y="-20%" width="140%" height="140%">
           <feGaussianBlur stdDeviation="3" result="b" />
-          <feMerge>
-            <feMergeNode in="b" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
+          <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
         </filter>
       </defs>
       <text
-        x="400"
-        y="115"
+        x="400" y="115"
         textAnchor="middle"
         fontFamily='"Great Vibes", "Cinzel Decorative", cursive'
         fontSize="140"
@@ -257,12 +215,9 @@ function HandwrittenName({ text, delay }: { text: string; delay: number }) {
         className="handwrite-stroke"
         style={{ animationDelay: `${delay}s` }}
         filter={`url(#glow-${text})`}
-      >
-        {text}
-      </text>
+      >{text}</text>
       <text
-        x="400"
-        y="115"
+        x="400" y="115"
         textAnchor="middle"
         fontFamily='"Great Vibes", "Cinzel Decorative", cursive'
         fontSize="140"
@@ -270,9 +225,7 @@ function HandwrittenName({ text, delay }: { text: string; delay: number }) {
         fill={`url(#g-${text})`}
         className="handwrite-fill"
         style={{ animationDelay: `${delay + 1.2}s` }}
-      >
-        {text}
-      </text>
+      >{text}</text>
     </svg>
   );
 }

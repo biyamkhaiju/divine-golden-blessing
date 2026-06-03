@@ -4,9 +4,7 @@
  */
 export default function SpinningChakra({ className = "" }: { className?: string }) {
   return (
-    <div
-      className={`pointer-events-none absolute inset-0 flex items-center justify-center ${className}`}
-    >
+    <div className={`pointer-events-none absolute inset-0 flex items-center justify-center ${className}`}>
       {/* Soft golden aura */}
       <div
         className="absolute rounded-full"
@@ -46,14 +44,7 @@ export default function SpinningChakra({ className = "" }: { className?: string 
 
         {/* Concentric rings */}
         <circle r="305" fill="none" stroke="url(#goldStroke)" strokeWidth="0.6" opacity="0.55" />
-        <circle
-          r="290"
-          fill="none"
-          stroke="#FFD77A"
-          strokeWidth="0.4"
-          strokeDasharray="1 5"
-          opacity="0.65"
-        />
+        <circle r="290" fill="none" stroke="#FFD77A" strokeWidth="0.4" strokeDasharray="1 5" opacity="0.65" />
         <circle r="260" fill="none" stroke="url(#goldStroke)" strokeWidth="1.1" opacity="0.7" />
         <circle r="252" fill="none" stroke="#F6C453" strokeWidth="0.5" opacity="0.4" />
 
@@ -62,7 +53,11 @@ export default function SpinningChakra({ className = "" }: { className?: string 
           const a = (i * 360) / 36;
           return (
             <g key={`r${i}`} transform={`rotate(${a})`}>
-              <path d="M 0 -302 L 4 -262 L -4 -262 Z" fill="url(#petalFill)" opacity="0.85" />
+              <path
+                d="M 0 -302 L 4 -262 L -4 -262 Z"
+                fill="url(#petalFill)"
+                opacity="0.85"
+              />
               <circle cy="-312" r="1.6" fill="#FFF2D6" opacity="0.95" />
             </g>
           );
@@ -98,14 +93,7 @@ export default function SpinningChakra({ className = "" }: { className?: string 
         aria-hidden="true"
       >
         <circle r="205" fill="none" stroke="#FFD77A" strokeWidth="0.8" opacity="0.55" />
-        <circle
-          r="180"
-          fill="none"
-          stroke="#F6C453"
-          strokeWidth="0.5"
-          strokeDasharray="2 3"
-          opacity="0.6"
-        />
+        <circle r="180" fill="none" stroke="#F6C453" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.6" />
         <circle r="160" fill="none" stroke="#FFD77A" strokeWidth="0.6" opacity="0.5" />
 
         {/* 24 dharma spokes */}
@@ -113,15 +101,7 @@ export default function SpinningChakra({ className = "" }: { className?: string 
           const a = (i * 360) / 24;
           return (
             <g key={`s${i}`} transform={`rotate(${a})`}>
-              <line
-                x1="0"
-                y1="-160"
-                x2="0"
-                y2="-200"
-                stroke="#FFD77A"
-                strokeWidth="0.9"
-                opacity="0.75"
-              />
+              <line x1="0" y1="-160" x2="0" y2="-200" stroke="#FFD77A" strokeWidth="0.9" opacity="0.75" />
               <circle cy="-205" r="1.4" fill="#FFF2D6" opacity="0.9" />
             </g>
           );

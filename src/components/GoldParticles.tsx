@@ -8,27 +8,14 @@ export default function GoldParticles() {
     const cvs = ref.current!;
     const ctx = cvs.getContext("2d")!;
     let raf = 0;
-    let w = 0,
-      h = 0;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    type P = {
-      x: number;
-      y: number;
-      r: number;
-      vy: number;
-      vx: number;
-      a: number;
-      t: number;
-      type: 0 | 1;
-    };
+    type P = { x: number; y: number; r: number; vy: number; vx: number; a: number; t: number; type: 0 | 1 };
     let parts: P[] = [];
 
     const resize = () => {
-      w = cvs.clientWidth;
-      h = cvs.clientHeight;
-      cvs.width = w * dpr;
-      cvs.height = h * dpr;
+      w = cvs.clientWidth; h = cvs.clientHeight;
+      cvs.width = w * dpr; cvs.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const count = Math.min(180, Math.floor((w * h) / 9000));
       parts = Array.from({ length: count }, () => spawn());
@@ -59,14 +46,10 @@ export default function GoldParticles() {
           g.addColorStop(0, `rgba(255,215,122,${0.35 * p.a * flicker})`);
           g.addColorStop(1, "rgba(255,215,122,0)");
           ctx.fillStyle = g;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r * 14, 0, Math.PI * 2);
-          ctx.fill();
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 14, 0, Math.PI * 2); ctx.fill();
         } else {
           ctx.fillStyle = `rgba(255,230,170,${p.a * flicker})`;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fill();
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
         }
       }
       raf = requestAnimationFrame(tick);
@@ -75,10 +58,7 @@ export default function GoldParticles() {
     resize();
     tick();
     window.addEventListener("resize", resize);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("resize", resize);
-    };
+    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
   }, []);
 
   return <canvas ref={ref} className="pointer-events-none absolute inset-0 h-full w-full" />;

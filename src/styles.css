@@ -1,6 +1,6 @@
 @import "tailwindcss" source(none);
+@source "../src";
 @import "tw-animate-css";
-
 
 @custom-variant dark (&:is(.dark *));
 
@@ -21,39 +21,25 @@
 
 :root {
   --bg: #471418;
-  --deep: #2a0b0d;
-  --gold: #ffd77a;
-  --royal: #f6c453;
-  --warm: #fff2d6;
-  --accent: #7a1f26;
+  --deep: #2A0B0D;
+  --gold: #FFD77A;
+  --royal: #F6C453;
+  --warm: #FFF2D6;
+  --accent: #7A1F26;
   --radius: 0.5rem;
 }
 
 @layer base {
-  html,
-  body {
-    background: var(--deep);
-    color: var(--warm);
-  }
-  body {
-    font-family: var(--font-serif);
-    -webkit-font-smoothing: antialiased;
-  }
-  ::selection {
-    background: var(--royal);
-    color: var(--deep);
-  }
+  html, body { background: var(--deep); color: var(--warm); }
+  body { font-family: var(--font-serif); -webkit-font-smoothing: antialiased; }
+  ::selection { background: var(--royal); color: var(--deep); }
 }
 
 @layer utilities {
-  .font-display {
-    font-family: var(--font-display);
-  }
-  .font-serif {
-    font-family: var(--font-serif);
-  }
+  .font-display { font-family: var(--font-display); }
+  .font-serif { font-family: var(--font-serif); }
   .text-gold-gradient {
-    background: linear-gradient(180deg, #fff2d6 0%, #ffd77a 35%, #f6c453 65%, #b8881f 100%);
+    background: linear-gradient(180deg, #FFF2D6 0%, #FFD77A 35%, #F6C453 65%, #B8881F 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -61,84 +47,51 @@
   }
   .vignette {
     background:
-      radial-gradient(
-        ellipse at center,
-        transparent 0%,
-        transparent 45%,
-        rgba(42, 11, 13, 0.6) 80%,
-        #2a0b0d 100%
-      ),
-      radial-gradient(ellipse at center, #5a1a1f 0%, #471418 40%, #2a0b0d 100%);
+      radial-gradient(ellipse at center, transparent 0%, transparent 45%, rgba(42,11,13,0.6) 80%, #2A0B0D 100%),
+      radial-gradient(ellipse at center, #5a1a1f 0%, #471418 40%, #2A0B0D 100%);
   }
   /* Drops the black background of the source jpg while keeping every gold pixel pixel-identical */
-  .blend-screen {
-    mix-blend-mode: screen;
-  }
+  .blend-screen { mix-blend-mode: screen; }
   .gold-divider {
     height: 1px;
-    background: linear-gradient(90deg, transparent, #f6c453, transparent);
+    background: linear-gradient(90deg, transparent, #F6C453, transparent);
   }
 
   @keyframes edge-glow {
-    0%,
-    100% {
+    0%, 100% {
       transform: scale(1);
-      filter: drop-shadow(0 0 6px rgba(255, 215, 122, 0.9))
-        drop-shadow(0 0 18px rgba(246, 196, 83, 0.7)) drop-shadow(0 0 48px rgba(246, 196, 83, 0.35));
+      filter:
+        drop-shadow(0 0 6px rgba(255,215,122,0.9))
+        drop-shadow(0 0 18px rgba(246,196,83,0.7))
+        drop-shadow(0 0 48px rgba(246,196,83,0.35));
     }
     50% {
       transform: scale(1.018);
-      filter: drop-shadow(0 0 10px rgba(255, 235, 180, 1))
-        drop-shadow(0 0 30px rgba(246, 196, 83, 0.95))
-        drop-shadow(0 0 80px rgba(246, 196, 83, 0.55));
+      filter:
+        drop-shadow(0 0 10px rgba(255,235,180,1))
+        drop-shadow(0 0 30px rgba(246,196,83,0.95))
+        drop-shadow(0 0 80px rgba(246,196,83,0.55));
     }
   }
-  .ganesh-edge-glow {
-    animation: edge-glow 3.2s ease-in-out infinite;
-  }
+  .ganesh-edge-glow { animation: edge-glow 3.2s ease-in-out infinite; }
 
   @keyframes chakra-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
   @keyframes chakra-spin-rev {
-    from {
-      transform: rotate(360deg);
-    }
-    to {
-      transform: rotate(0deg);
-    }
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
   }
   @keyframes chakra-pulse {
-    0%,
-    100% {
-      opacity: 0.55;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.9;
-      transform: scale(1.06);
-    }
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.06); }
   }
 
   @keyframes handwrite-stroke {
-    0% {
-      stroke-dasharray: 1400;
-      stroke-dashoffset: 1400;
-      opacity: 1;
-    }
-    85% {
-      stroke-dashoffset: 0;
-      opacity: 1;
-    }
-    100% {
-      stroke-dashoffset: 0;
-      opacity: 0;
-    }
+    0% { stroke-dasharray: 1400; stroke-dashoffset: 1400; opacity: 1; }
+    85% { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 0; }
   }
   .handwrite-stroke {
     stroke-dasharray: 1400;
@@ -147,28 +100,21 @@
     animation: handwrite-stroke 2.4s ease-in-out forwards;
   }
   @keyframes handwrite-fill {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
   .handwrite-fill {
     opacity: 0;
     animation: handwrite-fill 0.9s ease-out forwards;
   }
 
+
   @keyframes shimmer {
-    0% {
-      background-position: -200% 0;
-    }
-    100% {
-      background-position: 200% 0;
-    }
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
   }
   .shimmer {
-    background: linear-gradient(90deg, #b8881f 0%, #fff2d6 50%, #b8881f 100%);
+    background: linear-gradient(90deg, #B8881F 0%, #FFF2D6 50%, #B8881F 100%);
     background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -177,159 +123,14 @@
   }
 
   @keyframes float-up {
-    0% {
-      transform: translateY(0) scale(1);
-      opacity: 0;
-    }
-    10% {
-      opacity: 0.7;
-    }
-    100% {
-      transform: translateY(-120vh) scale(1.2);
-      opacity: 0;
-    }
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    10% { opacity: 0.7; }
+    100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
   }
 
   @keyframes fade-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  .fade-up {
-    animation: fade-up 1.4s ease-out both;
-  }
-
-  @keyframes music-bar {
-    0% {
-      transform: scaleY(0.35);
-    }
-    100% {
-      transform: scaleY(1);
-    }
-  }
-
-  /* Invitation page background — subtle Nepali pattern over deep maroon */
-  .invitation-bg {
-    background-color: var(--bg);
-    background-image:
-      radial-gradient(circle at 20% 10%, rgba(246, 196, 83, 0.08), transparent 40%),
-      radial-gradient(circle at 80% 90%, rgba(246, 196, 83, 0.06), transparent 45%),
-      repeating-radial-gradient(
-        circle at 50% 50%,
-        rgba(246, 196, 83, 0.035) 0,
-        rgba(246, 196, 83, 0.035) 1px,
-        transparent 1px,
-        transparent 22px
-      );
-  }
-
-  /* Ganesh aura + shimmer */
-  .ganesh-aura::before {
-    content: "";
-    position: absolute;
-    inset: -25%;
-    border-radius: 9999px;
-    background: radial-gradient(
-      circle,
-      rgba(255, 215, 122, 0.45) 0%,
-      rgba(246, 196, 83, 0.18) 35%,
-      transparent 70%
-    );
-    filter: blur(14px);
-    animation: ganesh-aura-pulse 3.5s ease-in-out infinite;
-    z-index: 0;
-  }
-  .ganesh-aura > * {
-    position: relative;
-    z-index: 1;
-  }
-  @keyframes ganesh-aura-pulse {
-    0%, 100% { opacity: 0.7; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.08); }
-  }
-  .ganesh-shimmer {
-    animation: ganesh-shimmer 4s ease-in-out infinite;
-    filter: drop-shadow(0 0 8px rgba(246, 196, 83, 0.6));
-  }
-  @keyframes ganesh-shimmer {
-    0%, 100% { filter: drop-shadow(0 0 8px rgba(246, 196, 83, 0.6)); }
-    50% { filter: drop-shadow(0 0 18px rgba(255, 235, 180, 0.95)); }
-  }
-
-  /* Mantra line reveal */
-  .mantra-line {
-    opacity: 0;
-    transform: translateY(14px);
-    animation: mantra-in 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  }
-  @keyframes mantra-in {
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
-  /* Shubha Vivaha reveal — cinematic zoom + fade */
-  .shubha-reveal {
-    opacity: 0;
-    transform: scale(0.92);
-    animation: shubha-in 2s cubic-bezier(0.22, 1, 0.36, 1) 2.6s forwards;
-  }
-  @keyframes shubha-in {
-    to { opacity: 1; transform: scale(1); }
-  }
-
-  /* Breathing golden glow over the Shubha Vivah text region */
-  .shubha-text-glow {
-    background: radial-gradient(
-      ellipse at center,
-      rgba(255, 215, 122, 0.35) 0%,
-      rgba(246, 196, 83, 0.15) 25%,
-      transparent 55%
-    );
-    mix-blend-mode: screen;
-    animation: shubha-glow 3s ease-in-out infinite;
-  }
-  @keyframes shubha-glow {
-    0%, 100% { opacity: 0.55; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.05); }
-  }
-
-  /* Floating sparks */
-  .shubha-spark {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #fff2d6 0%, #ffd77a 40%, transparent 70%);
-    box-shadow: 0 0 8px rgba(255, 215, 122, 0.9);
-    opacity: 0;
-    animation: spark-float 3.2s ease-in-out infinite;
-  }
-  @keyframes spark-float {
-    0% { opacity: 0; transform: translateY(8px) scale(0.6); }
-    50% { opacity: 1; transform: translateY(-6px) scale(1.1); }
-    100% { opacity: 0; transform: translateY(-18px) scale(0.5); }
-  }
-
-  /* Generic reveal animations */
-  .reveal-up {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: reveal-up 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  }
-  @keyframes reveal-up {
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .reveal-scale {
-    opacity: 0;
-    transform: scale(0.96);
-    animation: reveal-scale 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  }
-  @keyframes reveal-scale {
-    to { opacity: 1; transform: scale(1); }
-  }
+  .fade-up { animation: fade-up 1.4s ease-out both; }
 }
-
