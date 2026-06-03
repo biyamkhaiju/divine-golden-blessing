@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import GoldParticles from "@/components/GoldParticles";
 import GaneshReveal from "@/components/GaneshReveal";
 import MandalaCorner from "@/components/MandalaCorner";
@@ -46,10 +47,11 @@ function Index() {
         <GaneshReveal groom="Aarav" bride="Sanjana" />
 
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-center">
-          <p className="fade-up font-serif text-xs tracking-[0.45em] uppercase text-[color:var(--warm)]/70" style={{ animationDelay: "8s", animationFillMode: "both" }}>
-            Scroll to begin the journey
-          </p>
+          <Link to="/invitation" className="fade-up font-serif text-xs tracking-[0.45em] uppercase text-[color:var(--warm)]/70 transition-colors hover:text-[color:var(--royal)]" style={{ animationDelay: "8s", animationFillMode: "both" }}>
+            Scroll to begin the journey →
+          </Link>
         </div>
+
       </section>
 
       {/* Scene 2 — Invitation */}

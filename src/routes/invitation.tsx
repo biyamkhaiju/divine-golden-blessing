@@ -1,0 +1,123 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import ganeshAsset from "@/assets/ganesh.asset.json";
+import shubhaAsset from "@/assets/shubha-vivah.jpg.asset.json";
+import MandalaCorner from "@/components/MandalaCorner";
+import MusicPlayer from "@/components/MusicPlayer";
+
+export const Route = createFileRoute("/invitation")({
+  head: () => ({
+    meta: [
+      { title: "शुभ विवाह — Aashish & Aayushi" },
+      { name: "description", content: "Nepali wedding invitation — Aashish weds Aayushi under the blessings of Lord Ganesh." },
+    ],
+    links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Great+Vibes&family=Tiro+Devanagari+Sanskrit&family=Yatra+One&display=swap",
+      },
+    ],
+  }),
+  component: InvitationPage,
+});
+
+function InvitationPage() {
+  return (
+    <main className="relative min-h-screen w-full overflow-x-hidden bg-[color:var(--bg)] text-[color:var(--warm)] invitation-bg">
+      <MusicPlayer />
+
+      {/* Ornament corners — same as front for continuity */}
+      <MandalaCorner className="absolute left-3 top-3 h-20 w-20 text-[color:var(--royal)]/55 md:h-28 md:w-28" />
+      <MandalaCorner className="absolute right-3 top-3 h-20 w-20 -scale-x-100 text-[color:var(--royal)]/55 md:h-28 md:w-28" />
+      <MandalaCorner className="absolute bottom-3 left-3 h-20 w-20 -scale-y-100 text-[color:var(--royal)]/55 md:h-28 md:w-28" />
+      <MandalaCorner className="absolute bottom-3 right-3 h-20 w-20 -scale-100 text-[color:var(--royal)]/55 md:h-28 md:w-28" />
+
+      <div className="relative mx-auto flex max-w-3xl flex-col items-center px-5 pb-24 pt-16 md:pt-24">
+        {/* Section 1 — Divine Beginning */}
+        <section className="flex flex-col items-center text-center">
+          <div className="relative">
+            <div className="absolute inset-0 -m-6 rounded-full bg-[radial-gradient(circle,rgba(246,196,83,0.35),transparent_70%)] aura-pulse" />
+            <img
+              src={ganeshAsset.url}
+              alt="Lord Ganesh"
+              draggable={false}
+              className="relative h-28 w-28 select-none object-contain ganesh-shimmer md:h-36 md:w-36"
+            />
+          </div>
+
+          <div className="mt-6 space-y-2 font-[Tiro_Devanagari_Sanskrit,serif] text-[color:var(--warm)]">
+            <p className="reveal-line text-gold-gradient text-base md:text-lg" style={{ animationDelay: "0.2s" }}>
+              ॐ श्री गणेशाय नमः
+            </p>
+            <p className="reveal-line text-sm leading-relaxed text-[color:var(--warm)]/90 md:text-base" style={{ animationDelay: "0.9s" }}>
+              वक्रतुंड महाकाय सूर्यकोटि समप्रभ।
+            </p>
+            <p className="reveal-line text-sm leading-relaxed text-[color:var(--warm)]/90 md:text-base" style={{ animationDelay: "1.6s" }}>
+              निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
+            </p>
+          </div>
+        </section>
+
+        <div className="gold-divider my-12 w-56 reveal-line" style={{ animationDelay: "2.2s" }} />
+
+        {/* Section 2 — Shubha Vivah */}
+        <section className="relative w-full reveal-zoom" style={{ animationDelay: "2.4s" }}>
+          <div className="relative mx-auto w-full max-w-2xl">
+            {/* Breathing golden glow behind the title area */}
+            <div className="pointer-events-none absolute inset-0 -m-4 rounded-3xl bg-[radial-gradient(ellipse_at_center,rgba(246,196,83,0.35),transparent_65%)] glow-breathe" />
+            {/* Sparkle dots */}
+            <span className="spark spark-1" />
+            <span className="spark spark-2" />
+            <span className="spark spark-3" />
+            <span className="spark spark-4" />
+            <img
+              src={shubhaAsset.url}
+              alt="शुभ विवाह"
+              draggable={false}
+              className="relative block w-full select-none rounded-xl shubha-blend"
+            />
+          </div>
+        </section>
+
+        {/* Section 3 — Couple */}
+        <section className="mt-16 flex flex-col items-center text-center">
+          <h1
+            className="font-[Yatra_One,serif] text-gold-gradient reveal-line"
+            style={{ fontSize: "clamp(2.4rem, 8vw, 4.5rem)", animationDelay: "3.2s", textShadow: "0 0 30px rgba(246,196,83,0.35)" }}
+          >
+            आशीष <span className="mx-2 text-[color:var(--royal)]">💛</span> आयुषी
+          </h1>
+          <p
+            className="mt-8 max-w-2xl font-[Tiro_Devanagari_Sanskrit,serif] leading-loose text-[color:var(--warm)]/85 reveal-line"
+            style={{ fontSize: "clamp(0.95rem, 1.6vw, 1.15rem)", animationDelay: "4s" }}
+          >
+            सुपुत्र: श्री [वरका बाबुको नाम] तथा श्रीमती [वरकी आमाको नाम] र सुपुत्री: श्री [कन्याका बाबुको नाम] तथा श्रीमती [कन्याको आमाको नाम] का साथ सु-सम्बन्ध हुने
+          </p>
+        </section>
+
+        <div className="gold-divider my-12 w-56 reveal-line" style={{ animationDelay: "4.6s" }} />
+
+        {/* Section 4 — Invitation message */}
+        <section className="reveal-soft text-center" style={{ animationDelay: "4.8s" }}>
+          <p
+            className="mx-auto max-w-2xl font-[Tiro_Devanagari_Sanskrit,serif] leading-loose text-[color:var(--warm)]/90"
+            style={{ fontSize: "clamp(1rem, 1.8vw, 1.25rem)" }}
+          >
+            को सुखद अवसरमा उपस्थित भई वर-वधुलाई आशीर्वाद प्रदान गरिदिनुहुन यहाँको गरिमामय उपस्थितिको लागि हार्दिक निमन्त्रणा गर्दछौं।
+          </p>
+          <p className="mt-10 font-serif text-[10px] tracking-[0.5em] uppercase text-[color:var(--royal)]/80">
+            ॥ Shubha Vivah ॥
+          </p>
+        </section>
+
+        <Link
+          to="/"
+          className="mt-12 font-serif text-[10px] tracking-[0.4em] uppercase text-[color:var(--warm)]/50 transition-colors hover:text-[color:var(--royal)]"
+        >
+          ← Back
+        </Link>
+      </div>
+    </main>
+  );
+}

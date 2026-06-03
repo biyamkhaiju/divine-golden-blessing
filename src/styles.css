@@ -133,4 +133,74 @@
     to { opacity: 1; transform: translateY(0); }
   }
   .fade-up { animation: fade-up 1.4s ease-out both; }
+
+  /* ===== Invitation page ===== */
+  .invitation-bg {
+    background:
+      radial-gradient(ellipse at top, rgba(246,196,83,0.08), transparent 55%),
+      radial-gradient(ellipse at center, #5a1a1f 0%, #471418 45%, #2A0B0D 100%);
+  }
+
+  @keyframes ganesh-shimmer {
+    0%, 100% { filter: drop-shadow(0 0 10px rgba(246,196,83,0.55)) drop-shadow(0 0 22px rgba(246,196,83,0.35)); }
+    50% { filter: drop-shadow(0 0 16px rgba(255,235,180,0.85)) drop-shadow(0 0 36px rgba(246,196,83,0.55)); }
+  }
+  .ganesh-shimmer { animation: ganesh-shimmer 3.4s ease-in-out infinite; }
+
+  @keyframes aura-pulse {
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.08); }
+  }
+  .aura-pulse { animation: aura-pulse 3.4s ease-in-out infinite; }
+
+  @keyframes glow-breathe {
+    0%, 100% { opacity: 0.55; transform: scale(0.98); }
+    50% { opacity: 1; transform: scale(1.04); }
+  }
+  .glow-breathe { animation: glow-breathe 3.8s ease-in-out infinite; }
+
+  /* Feather the shubha image edges into the page maroon */
+  .shubha-blend {
+    -webkit-mask-image: radial-gradient(ellipse 95% 85% at center, #000 55%, transparent 100%);
+    mask-image: radial-gradient(ellipse 95% 85% at center, #000 55%, transparent 100%);
+    filter: drop-shadow(0 10px 40px rgba(0,0,0,0.5)) drop-shadow(0 0 30px rgba(246,196,83,0.18));
+  }
+
+  /* Reveal animations */
+  @keyframes reveal-line {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal-line { opacity: 0; animation: reveal-line 1.1s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+  @keyframes reveal-zoom {
+    from { opacity: 0; transform: scale(0.94); filter: blur(6px); }
+    to { opacity: 1; transform: scale(1); filter: blur(0); }
+  }
+  .reveal-zoom { opacity: 0; animation: reveal-zoom 1.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+  @keyframes reveal-soft {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .reveal-soft { opacity: 0; animation: reveal-soft 1.4s ease-out both; }
+
+  /* Sparkles around shubha title */
+  @keyframes spark-twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.4); }
+    50% { opacity: 1; transform: scale(1.1); }
+  }
+  .spark {
+    position: absolute;
+    width: 6px; height: 6px; border-radius: 9999px;
+    background: radial-gradient(circle, #FFF2D6 0%, #FFD77A 50%, transparent 70%);
+    box-shadow: 0 0 12px rgba(255,235,180,0.9);
+    animation: spark-twinkle 2.6s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .spark-1 { top: 12%; left: 14%; animation-delay: 0s; }
+  .spark-2 { top: 22%; right: 12%; animation-delay: 0.7s; }
+  .spark-3 { bottom: 18%; left: 22%; animation-delay: 1.3s; }
+  .spark-4 { bottom: 14%; right: 18%; animation-delay: 1.9s; }
 }
+
