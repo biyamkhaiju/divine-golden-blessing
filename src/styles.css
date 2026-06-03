@@ -212,4 +212,124 @@
       transform: scaleY(1);
     }
   }
+
+  /* Invitation page background — subtle Nepali pattern over deep maroon */
+  .invitation-bg {
+    background-color: var(--bg);
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(246, 196, 83, 0.08), transparent 40%),
+      radial-gradient(circle at 80% 90%, rgba(246, 196, 83, 0.06), transparent 45%),
+      repeating-radial-gradient(
+        circle at 50% 50%,
+        rgba(246, 196, 83, 0.035) 0,
+        rgba(246, 196, 83, 0.035) 1px,
+        transparent 1px,
+        transparent 22px
+      );
+  }
+
+  /* Ganesh aura + shimmer */
+  .ganesh-aura::before {
+    content: "";
+    position: absolute;
+    inset: -25%;
+    border-radius: 9999px;
+    background: radial-gradient(
+      circle,
+      rgba(255, 215, 122, 0.45) 0%,
+      rgba(246, 196, 83, 0.18) 35%,
+      transparent 70%
+    );
+    filter: blur(14px);
+    animation: ganesh-aura-pulse 3.5s ease-in-out infinite;
+    z-index: 0;
+  }
+  .ganesh-aura > * {
+    position: relative;
+    z-index: 1;
+  }
+  @keyframes ganesh-aura-pulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.08); }
+  }
+  .ganesh-shimmer {
+    animation: ganesh-shimmer 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(246, 196, 83, 0.6));
+  }
+  @keyframes ganesh-shimmer {
+    0%, 100% { filter: drop-shadow(0 0 8px rgba(246, 196, 83, 0.6)); }
+    50% { filter: drop-shadow(0 0 18px rgba(255, 235, 180, 0.95)); }
+  }
+
+  /* Mantra line reveal */
+  .mantra-line {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: mantra-in 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @keyframes mantra-in {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Shubha Vivaha reveal — cinematic zoom + fade */
+  .shubha-reveal {
+    opacity: 0;
+    transform: scale(0.92);
+    animation: shubha-in 2s cubic-bezier(0.22, 1, 0.36, 1) 2.6s forwards;
+  }
+  @keyframes shubha-in {
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* Breathing golden glow over the Shubha Vivah text region */
+  .shubha-text-glow {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255, 215, 122, 0.35) 0%,
+      rgba(246, 196, 83, 0.15) 25%,
+      transparent 55%
+    );
+    mix-blend-mode: screen;
+    animation: shubha-glow 3s ease-in-out infinite;
+  }
+  @keyframes shubha-glow {
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+  }
+
+  /* Floating sparks */
+  .shubha-spark {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff2d6 0%, #ffd77a 40%, transparent 70%);
+    box-shadow: 0 0 8px rgba(255, 215, 122, 0.9);
+    opacity: 0;
+    animation: spark-float 3.2s ease-in-out infinite;
+  }
+  @keyframes spark-float {
+    0% { opacity: 0; transform: translateY(8px) scale(0.6); }
+    50% { opacity: 1; transform: translateY(-6px) scale(1.1); }
+    100% { opacity: 0; transform: translateY(-18px) scale(0.5); }
+  }
+
+  /* Generic reveal animations */
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: reveal-up 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @keyframes reveal-up {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.96);
+    animation: reveal-scale 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @keyframes reveal-scale {
+    to { opacity: 1; transform: scale(1); }
+  }
 }
+
