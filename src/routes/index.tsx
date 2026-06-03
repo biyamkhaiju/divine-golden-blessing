@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import GoldParticles from "@/components/GoldParticles";
 import GaneshReveal from "@/components/GaneshReveal";
 import MandalaCorner from "@/components/MandalaCorner";
-import WeddingMusic from "@/components/WeddingMusic";
+import InvitationPage from "@/components/InvitationPage";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -61,67 +61,8 @@ function Index() {
         </div>
       </section>
 
-      {/* Scene 2 — Invitation */}
-      <section className="relative px-6 py-32">
-        <div className="mx-auto max-w-2xl text-center">
-          <div className="gold-divider mx-auto w-40" />
-          <p
-            className="mt-8 font-serif italic text-[color:var(--warm)]/80"
-            style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.4rem)" }}
-          >
-            Together with their families
-          </p>
-          <p
-            className="mt-3 font-serif italic text-[color:var(--warm)]/80"
-            style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.4rem)" }}
-          >
-            request the pleasure of your presence
-          </p>
-          <p
-            className="mt-3 font-serif italic text-[color:var(--warm)]/80"
-            style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.4rem)" }}
-          >
-            at their wedding celebration
-          </p>
-
-          <div className="mt-14">
-            <h2 className="font-display shimmer" style={{ fontSize: "clamp(2rem, 6vw, 4rem)" }}>
-              Aarav <span className="font-serif italic text-[color:var(--royal)]">&</span> Sanjana
-            </h2>
-          </div>
-
-          <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3">
-            {[
-              { label: "Date", value: "Kartik 22, 2083" },
-              { label: "Venue", value: "Hyatt Regency, Kathmandu" },
-              { label: "Muhurta", value: "7:45 PM" },
-            ].map((it) => (
-              <div key={it.label}>
-                <p className="font-serif text-[10px] tracking-[0.4em] uppercase text-[color:var(--royal)]/80">
-                  {it.label}
-                </p>
-                <p
-                  className="mt-2 font-display text-gold-gradient"
-                  style={{ fontSize: "clamp(1.05rem, 1.6vw, 1.4rem)" }}
-                >
-                  {it.value}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="gold-divider mx-auto mt-16 w-40" />
-
-          {/* Music Player */}
-          <div className="mt-10">
-            <WeddingMusic />
-          </div>
-
-          <p className="mt-10 font-serif text-[10px] tracking-[0.5em] uppercase text-[color:var(--warm)]/60">
-            ॥ Shubha Vivah ॥
-          </p>
-        </div>
-      </section>
+      {/* Scene 2 — Invitation Page */}
+      <InvitationPage />
     </main>
   );
 }
