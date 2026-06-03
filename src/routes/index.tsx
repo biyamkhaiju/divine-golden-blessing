@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import GoldParticles from "@/components/GoldParticles";
 import GaneshReveal from "@/components/GaneshReveal";
 import MandalaCorner from "@/components/MandalaCorner";
