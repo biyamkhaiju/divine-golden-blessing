@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import GoldParticles from "@/components/GoldParticles";
 import GaneshReveal from "@/components/GaneshReveal";
 import MandalaCorner from "@/components/MandalaCorner";
-import ganeshImg from "@/assets/ganesh.asset.png";
-import shubhaImg from "@/assets/shubha-vivah.jpg.asset.json?url";
+import ganeshAsset from "@/assets/ganesh.asset.png";
+import shubhaAsset from "@/assets/shubha-vivah.jpg.asset.json";
 import MusicPlayer from "@/components/MusicPlayer";
 
 export const Route = createFileRoute("/")({
@@ -71,7 +71,7 @@ function Index() {
             <div className="relative">
               <div className="absolute inset-0 -m-6 rounded-full bg-[radial-gradient(circle,rgba(246,196,83,0.35),transparent_70%)] aura-pulse" />
               <img
-                src={ganeshImg}
+                src={ganeshAsset.url}
                 alt="Lord Ganesh"
                 draggable={false}
                 className="relative h-28 w-28 select-none object-contain ganesh-shimmer md:h-36 md:w-36"
@@ -104,7 +104,7 @@ function Index() {
               <span className="spark spark-3" />
               <span className="spark spark-4" />
               <img
-                src={shubhaImg}
+                src={shubhaAsset.url}
                 alt="शुभ विवाह"
                 draggable={false}
                 className="relative block w-full select-none rounded-xl shubha-blend"
