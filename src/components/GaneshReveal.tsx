@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import ganeshAsset from "@/assets/ganesh.asset.json";
+import ganeshImg from "@/assets/ganesh.png";
 import SpinningChakra from "./SpinningChakra";
 
 /**
@@ -142,7 +142,7 @@ export default function GaneshReveal({ bride, groom }: { bride: string; groom: s
       >
         <img
           ref={imgRef}
-          src={ganeshAsset.url}
+          src={ganeshImg}
           alt="Lord Ganesh blessing"
           crossOrigin="anonymous"
           onLoad={() => setImgReady(true)}
